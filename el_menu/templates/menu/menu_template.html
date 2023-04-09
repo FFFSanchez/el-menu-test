@@ -1,0 +1,14 @@
+{% load menu_extras %}
+<a href="{{ menu_item.explicit_url }}">{{ menu_item.name }}</a>
+{% if menu_item.children %}
+<details {% if menu_item.id in unwrapped_menu_item_ids %} open {% endif %}>
+    <summary>
+
+    </summary>
+    {% for child in menu_item.children %}
+    <div class="menu_item ml-3">
+        {% draw_menu_item_children child.id %}
+    </div>
+    {% endfor %}
+</details>
+{% endif %}
